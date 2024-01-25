@@ -1,3 +1,9 @@
+# Important Links: 
+
+1. Lab Exercise: [Lab Exercise](https://frolicking-taiyaki-679ab0.netlify.app/lab/index.html)
+2. Kanbas: [Kanbas](https://frolicking-taiyaki-679ab0.netlify.app/kanbas/courses/home/screen)
+3. Home Page: [HomePage](https://frolicking-taiyaki-679ab0.netlify.app/kanbas/account/profile/screen)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
