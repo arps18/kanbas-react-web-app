@@ -1,0 +1,17 @@
+/* p{
+    background-color: red;
+    color: white;
+}
+
+p{
+    background-color: blue;
+}
+
+p#p1{
+    background-color: green;
+} */
+
+.wd-yellow-on-blue{
+    background-color: yellow;
+    color: blue;
+}
