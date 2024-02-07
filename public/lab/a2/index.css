@@ -48,5 +48,19 @@ p#p1{
 .wd-fg-color-red { color: #ff7070; }
 .wd-fg-color-green { color: green; }
 
-
+.wd-bg-color-yellow {
+    background-color: #ffff07;
+ }
+ .wd-bg-color-blue {
+    background-color: #7070ff;
+ }
+ .wd-bg-color-red {
+    background-color: #ff7070;
+ }
+ .wd-bg-color-green {
+    background-color: green;
+ }
+ 
+ 
+ 
  
