@@ -15,3 +15,9 @@ p#p1{
     background-color: yellow;
     color: blue;
 }
+
+p {
+    background-color: blue;
+    color: white;
+ }
+ 
