@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Labs from './Labs'
 
 // function App() {
 //   return (
@@ -25,7 +26,12 @@ import './App.css';
 
 function App(){
   return (
-    <h1>Hello World!</h1>
+    
+      <div>
+        <Labs />
+          <h1>Hello World!</h1>
+        
+      </div>
   );
 }
 
