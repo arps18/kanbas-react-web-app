@@ -1,3 +1,6 @@
+import AddingAndRemovingDataToFromArrays from "./arrays/AddingAndRemovingDataToFromArrays";
+import ArrayIndexAndLength from "./arrays/ArrayIndexAndLength";
+import WorkingWithArrays from "./arrays/WorkingWithArrays";
 import IfElse from "./conditionals/IfElse";
 import TernaryOperator from "./conditionals/TernaryOperator";
 import ArrowFunctions from "./functions/ArrowFunctions";
@@ -23,6 +26,9 @@ function JavaScript() {
           <ArrowFunctions />
           <ImpliedReturn />
           <FunctionParanthesisAndParameters />
+          <WorkingWithArrays />
+          <ArrayIndexAndLength />
+          <AddingAndRemovingDataToFromArrays />
        </div>
     );
  }
