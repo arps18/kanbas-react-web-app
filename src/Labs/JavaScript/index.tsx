@@ -12,7 +12,10 @@ import ArrowFunctions from "./functions/ArrowFunctions";
 import ES5Function from "./functions/ES5Functions";
 import FunctionParanthesisAndParameters from "./functions/FunctionParanthesisAndParameters";
 import ImpliedReturn from "./functions/ImpliedReturn";
+import Destructing from "./json/Destructing";
+import House from "./json/House";
 import JsonStringify from "./json/JsonStringify";
+import Spreading from "./json/Spreading";
 import TemplateLiterals from "./string/TemplateLiterals";
 import BooleanVariables from "./variables/BooleanVariables";
 import VariablesAndConstants from "./variables/VariablesAndConstants";
@@ -43,6 +46,9 @@ function JavaScript() {
           <FindIndex />
           <FilterFunction />
           <TemplateLiterals />
+          <House />
+          <Spreading />
+          <Destructing />
        </div>
     );
  }
