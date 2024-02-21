@@ -13,6 +13,7 @@ import ES5Function from "./functions/ES5Functions";
 import FunctionParanthesisAndParameters from "./functions/FunctionParanthesisAndParameters";
 import ImpliedReturn from "./functions/ImpliedReturn";
 import JsonStringify from "./json/JsonStringify";
+import TemplateLiterals from "./string/TemplateLiterals";
 import BooleanVariables from "./variables/BooleanVariables";
 import VariablesAndConstants from "./variables/VariablesAndConstants";
 import VariableTypes from "./variables/VariableTypes";
@@ -41,6 +42,7 @@ function JavaScript() {
           <FindFunctions />
           <FindIndex />
           <FilterFunction />
+          <TemplateLiterals />
        </div>
     );
  }
