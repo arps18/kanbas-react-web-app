@@ -1,8 +1,10 @@
 import {Link} from "react-router-dom";
 import Nav from "../Nav";
+import KanbasNavigation from "./Navigation";
 function Kanbas() {
     return (
       <div className="d-flex">
+        <KanbasNavigation />
         <div>
           <h1>Kanbas Navigation</h1>
         </div>
