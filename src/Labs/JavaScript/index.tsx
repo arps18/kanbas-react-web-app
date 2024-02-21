@@ -1,5 +1,7 @@
 import AddingAndRemovingDataToFromArrays from "./arrays/AddingAndRemovingDataToFromArrays";
 import ArrayIndexAndLength from "./arrays/ArrayIndexAndLength";
+import ForLoops from "./arrays/ForLoops";
+import MapFunction from "./arrays/MapFunction";
 import WorkingWithArrays from "./arrays/WorkingWithArrays";
 import IfElse from "./conditionals/IfElse";
 import TernaryOperator from "./conditionals/TernaryOperator";
@@ -29,6 +31,8 @@ function JavaScript() {
           <WorkingWithArrays />
           <ArrayIndexAndLength />
           <AddingAndRemovingDataToFromArrays />
+          <ForLoops />
+          <MapFunction />
        </div>
     );
  }
