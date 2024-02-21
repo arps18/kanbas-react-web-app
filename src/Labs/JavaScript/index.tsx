@@ -1,5 +1,8 @@
 import AddingAndRemovingDataToFromArrays from "./arrays/AddingAndRemovingDataToFromArrays";
 import ArrayIndexAndLength from "./arrays/ArrayIndexAndLength";
+import FilterFunction from "./arrays/FilterFunction";
+import FindFunctions from "./arrays/FindFunctions";
+import FindIndex from "./arrays/FindIndex";
 import ForLoops from "./arrays/ForLoops";
 import MapFunction from "./arrays/MapFunction";
 import WorkingWithArrays from "./arrays/WorkingWithArrays";
@@ -9,6 +12,7 @@ import ArrowFunctions from "./functions/ArrowFunctions";
 import ES5Function from "./functions/ES5Functions";
 import FunctionParanthesisAndParameters from "./functions/FunctionParanthesisAndParameters";
 import ImpliedReturn from "./functions/ImpliedReturn";
+import JsonStringify from "./json/JsonStringify";
 import BooleanVariables from "./variables/BooleanVariables";
 import VariablesAndConstants from "./variables/VariablesAndConstants";
 import VariableTypes from "./variables/VariableTypes";
@@ -33,6 +37,10 @@ function JavaScript() {
           <AddingAndRemovingDataToFromArrays />
           <ForLoops />
           <MapFunction />
+          <JsonStringify />
+          <FindFunctions />
+          <FindIndex />
+          <FilterFunction />
        </div>
     );
  }
