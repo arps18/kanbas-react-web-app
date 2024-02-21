@@ -1,5 +1,9 @@
 import IfElse from "./conditionals/IfElse";
 import TernaryOperator from "./conditionals/TernaryOperator";
+import ArrowFunctions from "./functions/ArrowFunctions";
+import ES5Function from "./functions/ES5Functions";
+import FunctionParanthesisAndParameters from "./functions/FunctionParanthesisAndParameters";
+import ImpliedReturn from "./functions/ImpliedReturn";
 import BooleanVariables from "./variables/BooleanVariables";
 import VariablesAndConstants from "./variables/VariablesAndConstants";
 import VariableTypes from "./variables/VariableTypes";
@@ -15,6 +19,10 @@ function JavaScript() {
           <BooleanVariables />
           <IfElse />
           <TernaryOperator />
+          <ES5Function />
+          <ArrowFunctions />
+          <ImpliedReturn />
+          <FunctionParanthesisAndParameters />
        </div>
     );
  }
