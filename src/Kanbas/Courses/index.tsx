@@ -8,7 +8,7 @@ import CourseNavigation from "../Navigation";
 
 import Modules from "../Modules";
 
-
+import Home from "../Courses/Home";
 
 function Courses() {
 
@@ -36,7 +36,7 @@ function Courses() {
 
                         <Route path="/" element={<Navigate to="Home" />} />
 
-                        <Route path="Home" element={<h1>Home</h1>} />
+                        <Route path="Home" element={<Home/>} />
 
                         <Route path="Modules" element={<Modules/>} />
 
