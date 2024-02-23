@@ -10,12 +10,12 @@ const Breadcrumb = ({ courseId, courseName, pageNames }: { courseId: string, cou
             <div className="col-12 d-block d-sm-none">
                 <div className="row fs-4 ps-0 pb-0 d-block d-lg-none">
                     <div className="text-center text-white bg-dark pt-4 pb-4 fs-4 align-middle">
-                        <a href="/Kanbas/Courses/CourseNavigation/menu.html"
+                        <a href="/"
                             className="text-decoration-none float-end fs-3">
                             <FaChevronDown className="text-white" />
                         </a>
                         <a className="text-decoration-none text-danger fs-3"
-                            href="/Kanbas/KanbasNavigation/menu.html">
+                            href="/">
                             <FaBars className="float-start mt-1 text-white" />
                         </a>
                         <a className="text-decoration-none" href="#">
