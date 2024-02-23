@@ -13,7 +13,7 @@ function Grades() {
         <div>
             <GradesTopBar />
             <div className="table-responsive">
-                <table className="table table-striped table-bordered border-secondary text-center">
+                <table className="table table-striped-columns table-bordered border-secondary text-center">
                     <thead className="table-secondary">
                         <tr>
                             <th>Student Name</th>
@@ -31,7 +31,7 @@ function Grades() {
                             const user = db.users.find((user) => user._id === enrollment.user);
                             return (
                                 <tr key={enrollment.user}>
-                                    <td>
+                                    <td className='text-danger'>
                                         {user?.firstName} {user?.lastName}
                                     </td>
                                     {assignments.map((assignment) => {

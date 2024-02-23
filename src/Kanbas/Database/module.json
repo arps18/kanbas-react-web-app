@@ -38,15 +38,15 @@
               "items": [
                   {
                       "title": "Introduction to Web Development",
-                      "url": "/path/to/introslides"
+                      "url": "/"
                   },
                   {
                       "title": "Creating an HTTP server with Node.js",
-                      "url": "/path/to/httpnode"
+                      "url": "/"
                   },
                   {
                       "title": "Creating a React Application",
-                      "url": "/path/to/reactapp"
+                      "url": "/"
                   }
               ]
           }
@@ -86,15 +86,15 @@
               "items": [
                   {
                       "title": "Introduction to Web Development",
-                      "url": "/path/to/introslides"
+                      "url": "/"
                   },
                   {
                       "title": "Creating an HTTP server with Node.js",
-                      "url": "/path/to/httpnode"
+                      "url": "/"
                   },
                   {
                       "title": "Creating a React Application",
-                      "url": "/path/to/reactapp"
+                      "url": "/"
                   }
               ]
           }
@@ -140,15 +140,15 @@
               "items": [
                   {
                       "title": "Introduction to Web Development",
-                      "url": "/path/to/introslides"
+                      "url": "/"
                   },
                   {
                       "title": "Creating an HTTP server with Node.js",
-                      "url": "/path/to/httpnode"
+                      "url": "/"
                   },
                   {
                       "title": "Creating a React Application",
-                      "url": "/path/to/reactapp"
+                      "url": "/"
                   }
               ]
           }
@@ -188,15 +188,15 @@
               "items": [
                   {
                       "title": "Introduction to Web Development",
-                      "url": "/path/to/introslides"
+                      "url": "/"
                   },
                   {
                       "title": "Creating an HTTP server with Node.js",
-                      "url": "/path/to/httpnode"
+                      "url": "/"
                   },
                   {
                       "title": "Creating a React Application",
-                      "url": "/path/to/reactapp"
+                      "url": "/"
                   }
               ]
           }
@@ -242,15 +242,15 @@
               "items": [
                   {
                       "title": "Introduction to Web Development",
-                      "url": "/path/to/introslides"
+                      "url": "/"
                   },
                   {
                       "title": "Creating an HTTP server with Node.js",
-                      "url": "/path/to/httpnode"
+                      "url": "/"
                   },
                   {
                       "title": "Creating a React Application",
-                      "url": "/path/to/reactapp"
+                      "url": "/"
                   }
               ]
           }
@@ -290,15 +290,15 @@
               "items": [
                   {
                       "title": "Introduction to Web Development",
-                      "url": "/path/to/introslides"
+                      "url": "/"
                   },
                   {
                       "title": "Creating an HTTP server with Node.js",
-                      "url": "/path/to/httpnode"
+                      "url": "/"
                   },
                   {
                       "title": "Creating a React Application",
-                      "url": "/path/to/reactapp"
+                      "url": "/"
                   }
               ]
           }
