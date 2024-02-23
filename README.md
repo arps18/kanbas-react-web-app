@@ -1,7 +1,7 @@
 # Important Links A2: 
 
-1. Lab Exercise: [Lab Exercise](https://a2--frolicking-taiyaki-679ab0.netlify.app/lab/a2/)
-2. Kanbas: [Kanbas](https://a2--frolicking-taiyaki-679ab0.netlify.app/kanbas/dashboard/)
+1. Lab Exercise: [Lab Exercise](https://a3--frolicking-taiyaki-679ab0.netlify.app/#/Labs)
+2. Kanbas: [Kanbas](https://a3--frolicking-taiyaki-679ab0.netlify.app/#/Kanbas/Dashboard)
 
 # Getting Started with Create React App
 
