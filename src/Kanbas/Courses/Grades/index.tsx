@@ -41,16 +41,17 @@ function Grades() {
                             return (
                                 <tr key={enrollment.user}>
                                     <td>
-                                        {/* {user.firstName} {user.lastName} */}
+                                        {user?.firstName} {user?.lastName}
                                     </td>
                                     {assignments.map((assignment) => {
+                                        const editableGrades: { [key: string]: string } = {};
                                         const grade = db.grades.find(
                                             (grade) =>
                                                 grade.student === enrollment.user && grade.assignment === assignment._id
                                         );
                                         const isEditable = true;
                                         const gradeKey = `${enrollment.user}-${assignment._id}`;
-                                        // const value = editableGrades[gradeKey] !== undefined ? editableGrades[gradeKey] : grade?.grade || '';
+                                        const value = editableGrades[gradeKey] !== undefined ? editableGrades[gradeKey] : grade?.grade || '';
 
                                         return (
                                             <td key={assignment._id}>
@@ -59,7 +60,7 @@ function Grades() {
                                                         <input
                                                             type="text"
                                                             className="form-control"
-                                                            // value={value}
+                                                            value={value}
                                                             onChange={(e) => handleGradeChange(enrollment.user, assignment._id, e.target.value)}
                                                         />
                                                     </div>
