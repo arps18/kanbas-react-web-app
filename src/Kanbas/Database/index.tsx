@@ -1,4 +1,15 @@
-import courses from "./courses.json";
-import modules from "./modules.json";
-import assignments from "./assignments.json";
-export {  courses,modules, assignments  };
+import courses from "./course.json";
+import modules from "./module.json";
+import assignments from "./assignment.json";
+import users from "./users.json";
+import enrollments from "./enrollments.json";
+import grades from "./grades.json";
+
+export default {
+    courses,
+    modules,
+    assignments,
+    users,
+    enrollments,
+    grades
+};

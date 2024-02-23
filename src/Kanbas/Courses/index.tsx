@@ -1,76 +1,47 @@
-import { courses } from "../../Kanbas/Database";
-
-import { Navigate, Route, Routes, useParams } from "react-router-dom";
-
-import { HiMiniBars3 } from "react-icons/hi2";
-
-import CourseNavigation from "../Navigation";
-
-import Modules from "../Modules";
-
-import Home from "../Courses/Home";
-
-import Assignments from "../Courses/Assignments";
-
-import AssignmentEditor from "../Courses/Assignments/Editor";
+import { Navigate, Route, Routes, useParams, useLocation } from "react-router-dom";
+import db  from "../Database";
+import CourseNavigation from "./Navigation";
+import Modules from "./Modules";
+import Home from "./Home";
+import Assignments from "./Assignments";
+import Breadcrumb from "./breadcrumb";
+import AssignmentEditor from "./Assignments/AssignmentEditor";
+import Grades from "./Grades";
+import "./index.css"
+import React from "react";
 
 function Courses() {
-
-    const { courseId } = useParams();
-
-    const course = courses.find((course) => course._id === courseId);
-
-    return (
-
-        <div>
-
-            <h1><HiMiniBars3 /> Course {course?.name}</h1>
-
-            <CourseNavigation />
-
-            <div>
-
-                <div
-
-                    className="overflow-y-scroll position-fixed bottom-0 end-0"
-
-                    style={{ left: "320px", top: "50px" }} >
-
-                    <Routes>
-
-                        <Route path="/" element={<Navigate to="Home" />} />
-
-                        <Route path="Home" element={<Home/>} />
-
-                        <Route path="Modules" element={<Modules/>} />
-
-                        <Route path="Piazza" element={<h1>Piazza</h1>} />
-
-                        <Route path="Zoom Meetings" element={<h1>Zoom Meetings</h1>} />
-
-                        <Route path="Assignments" element={<Assignments/>} />
-
-                        <Route path="Assignments/:assignmentId" element={<AssignmentEditor/>}/>
-
-                        <Route path="Quizzes" element={<h1>Quizzes</h1>} />
-
-                        <Route path="Grades" element={<h1>Grades</h1>} />
-
-                        <Route path="People" element={<h1>People</h1>} />
-
-                    </Routes>
-
-                </div>
-
-            </div>
-
-
-
-
+  const { courseId } = useParams();
+  const course = db.courses.find((course) => course._id === courseId);
+  const location = useLocation();
+  const pathSegments = location.pathname.split("/").filter(segment => segment !== "");
+  const pageNames = pathSegments.slice(3);
+  return (
+    <div className="container ms-0 me-0 main-content">
+        <div className="row">
+            {course && <Breadcrumb courseId={course._id} courseName={course.name} pageNames={pageNames} />}
         </div>
 
-    );
-
+        <div className="row">
+            <div className="col-2">
+                <CourseNavigation />
+            </div>
+            <div className="col ms-5">
+                <div>
+                    <div>
+                        <Routes>
+                            <Route path="/" element={<Navigate to="Home" />} />
+                            <Route path="Home" element={<Home />} />
+                            <Route path="Modules" element={<Modules />} />
+                            <Route path="Assignments" element={<Assignments />} />
+                            <Route path="Assignments/:assignmentId" element={<AssignmentEditor />} />
+                            <Route path="Grades" element={<Grades />} />
+                        </Routes>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+);
 }
-
 export default Courses;

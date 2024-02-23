@@ -1,32 +1,64 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { courses } from "../Database";
-function Dashboard() {
-  return (
-    <div className="p-4">
-      <h1>Dashboard</h1>              <hr />
-      <h2>Published Courses (12)</h2> <hr />
-      <div className="row">
-        <div className="row row-cols-1 row-cols-md-5 g-4">
-          {courses.map((course) => (
-            <div key={course._id} className="col" style={{ width: 300 }}>
-              <div className="card">
-                <img src={`/images/${course.image}`} className="card-img-top"
-                     style={{ height: 150 }}/>
-                <div className="card-body">
-                  <Link className="card-title" to={`/Kanbas/Courses/${course._id}/Home`}
-                    style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }}>
-                    {course.name} </Link>
-                  <p className="card-text">{course.name}</p>
-                  <Link to={`/Kanbas/Courses/${course._id}/Home`} className="btn btn-primary">
-                    Go </Link>
-                </div>
-              </div>
+import db from "../Database";
+import './index.css';
+import { FaSquarePen, FaEllipsisVertical } from 'react-icons/fa6';
+import React from "react";
+
+const Dashboard = () => {
+    const courses = db.courses;
+    const course_count = courses.length;
+    console.log(courses)
+    return (
+        // Dashboard
+        <div className="col ms-5 ms-lg-3 container ms-0 me-0 main-content">
+            <div className="row">
+                <h1 className="display-6 ps-0 mt-2">Dashboard</h1>
+                <hr />
             </div>
-          ))}
+
+            <div className="row">
+                <h4 className="ps-0">Published Courses ({course_count})</h4>
+                <hr />
+            </div>
+
+            <div className="row">
+                <div className="d-flex flex-row flex-wrap ps-0">
+                    {courses.map((course, index) => (
+                        <div className="card dash-card">
+                            <div className="card-menu">
+                                <div className="dropdown">
+                                    <button className="btn text-white card-dropdown" type="button" id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <FaEllipsisVertical />
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li><a className="dropdown-item" href="#">Action</a></li>
+                                        <li><a className="dropdown-item" href="#">Another action</a></li>
+                                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <Link key={course._id} to={`/Kanbas/Courses/${course._id}`} className="text-link">
+                                <img src="/images/course.png" className="card-img-top" alt="Course Image" />
+                            </Link>
+                            <div className="card-body">
+                                <div className="mb-3">
+                                    <Link key={course._id} to={`/Kanbas/Courses/${course._id}`} className="text-link">
+                                        <h5 className="card-title dash-card-title">{course.name}</h5>
+                                        <h6 className="card-subtitle mb-2 text-body-secondary">{course.number}</h6>
+                                        <p className="card-text">
+                                            <small className="text-body-secondary">202410_1 Fall 2023 Semester Full
+                                                Term</small>
+                                        </p>
+                                    </Link>
+                                </div>
+                                <div><FaSquarePen /></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 export default Dashboard;

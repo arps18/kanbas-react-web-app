@@ -1,34 +1,61 @@
-.wd-navigation {
-    background-color: white;
-    list-style: none;
-    padding: 0;
-    width: 150px;
-    margin: 0px;
-    font-size: 15px;
-    margin-left: 20px;
+body {
+    font-family: 'Lato', sans-serif;
+}
+.ps-0{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+ul.course-nav {
+    list-style-type: none;
+    display: inline-block;
+    text-align: justify;
+    width: 200px;
+    padding-left: 0;
 }
 
-.wd-navigation li {
-    padding-left: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+ul.course-nav li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
 }
 
-.wd-navigation li.wd-active {
-    border-left: 2px solid black;
-}
-
-.wd-navigation li.wd-active a {
-    color: black;
-}
-
-.wd-navigation a {
+ul.course-nav li>a {
     color: red;
     text-decoration: none;
 }
 
-.wd-navigation-small {
-    width: 100% !important;
+.course-nav-selected {
+    border-left: 2px solid black;
+}
+
+.course-nav-selected a {
+    color: black !important;
+    font-weight: bold;
+}
+
+.course-nav li a {
+    margin-left: 10px;
+}
+
+.course-menu {
+    list-style-type: none;
+}
+
+.course-menu-text {
+    color: red;
+    text-decoration: none;
+}
+
+.course-link {
+    color: grey;
+}
+
+.course-item-hidden-icon {
+    color: black;
+}
+
+.cnav-small-text {
+    font-size: 0.7em;
+    margin-left: 10px;
+    margin-bottom: 5px;
 }

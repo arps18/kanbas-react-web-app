@@ -1,0 +1,218 @@
+[
+  {
+      "_id": "A1",
+      "title": "A1 SETUP",
+      "week": "Week 0 - SETUP",
+      "dueDate": "Sep 18, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A2",
+      "title": "A2 HTML",
+      "week": "Week 1 - HTML",
+      "dueDate": "Sep 25, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A3",
+      "title": "A3 CSS",
+      "week": "Week 2 - CSS",
+      "dueDate": "Oct 2, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A4",
+      "title": "A4 BOOTSTRAP",
+      "week": "Week 3 - Bootstrap",
+      "dueDate": "Oct 10, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A5",
+      "title": "A5 JAVASCRIPT",
+      "week": "Week 4 - JavaScript",
+      "dueDate": "Oct 16, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A6",
+      "title": "A6 REACT",
+      "week": "Week 5 - React & Routing",
+      "dueDate": "Oct 23, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A7",
+      "title": "A7 REDUX",
+      "week": "Week 6 - Redux",
+      "dueDate": "Oct 30, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A8",
+      "title": "A8 NODE",
+      "week": "Week 7 - Node.js",
+      "dueDate": "Nov 6, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A9",
+      "title": "A9 MONGO",
+      "week": "Week 8 - MongoDB",
+      "dueDate": "Nov 13, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS101"
+  },
+  {
+      "_id": "A10",
+      "title": "A1 SETUP",
+      "week": "Week 0 - SETUP",
+      "dueDate": "Sep 18, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A11",
+      "title": "A2 HTML",
+      "week": "Week 1 - HTML",
+      "dueDate": "Sep 25, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A12",
+      "title": "A3 CSS",
+      "week": "Week 2 - CSS",
+      "dueDate": "Oct 2, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A13",
+      "title": "A4 BOOTSTRAP",
+      "week": "Week 3 - Bootstrap",
+      "dueDate": "Oct 10, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A14",
+      "title": "A5 JAVASCRIPT",
+      "week": "Week 4 - JavaScript",
+      "dueDate": "Oct 16, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A15",
+      "title": "A6 REACT",
+      "week": "Week 5 - React & Routing",
+      "dueDate": "Oct 23, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A16",
+      "title": "A7 REDUX",
+      "week": "Week 6 - Redux",
+      "dueDate": "Oct 30, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A17",
+      "title": "A8 NODE",
+      "week": "Week 7 - Node.js",
+      "dueDate": "Nov 6, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A18",
+      "title": "A9 MONGO",
+      "week": "Week 8 - MongoDB",
+      "dueDate": "Nov 13, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS102"
+  },
+  {
+      "_id": "A19",
+      "title": "A1 SETUP",
+      "week": "Week 0 - SETUP",
+      "dueDate": "Sep 18, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A20",
+      "title": "A2 HTML",
+      "week": "Week 1 - HTML",
+      "dueDate": "Sep 25, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A21",
+      "title": "A3 CSS",
+      "week": "Week 2 - CSS",
+      "dueDate": "Oct 2, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A22",
+      "title": "A4 BOOTSTRAP",
+      "week": "Week 3 - Bootstrap",
+      "dueDate": "Oct 10, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A23",
+      "title": "A5 JAVASCRIPT",
+      "week": "Week 4 - JavaScript",
+      "dueDate": "Oct 16, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A24",
+      "title": "A6 REACT",
+      "week": "Week 5 - React & Routing",
+      "dueDate": "Oct 23, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A25",
+      "title": "A7 REDUX",
+      "week": "Week 6 - Redux",
+      "dueDate": "Oct 30, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A26",
+      "title": "A8 NODE",
+      "week": "Week 7 - Node.js",
+      "dueDate": "Nov 6, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  },
+  {
+      "_id": "A27",
+      "title": "A9 MONGO",
+      "week": "Week 8 - MongoDB",
+      "dueDate": "Nov 13, 2022 at 11:59pm",
+      "points": 100,
+      "course": "RS103"
+  }
+]
