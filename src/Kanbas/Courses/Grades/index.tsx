@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import db from '../../Database';
 import { useParams } from 'react-router-dom';
 import GradesTopBar from './GradesTopBar';
@@ -8,15 +8,6 @@ function Grades() {
     const { courseId } = useParams();
     const assignments = db.assignments.filter((assignment) => assignment.course === courseId);
     const enrollments = db.enrollments.filter((enrollment) => enrollment.course === courseId);
-
-    const [editableGrades, setEditableGrades] = useState({});
-
-    const handleGradeChange = (enrollmentId: string, assignmentId: string, value: string) => {
-        setEditableGrades((prevGrades) => ({
-            ...prevGrades,
-            [`${enrollmentId}-${assignmentId}`]: value,
-        }));
-    };
 
     return (
         <div>
@@ -44,29 +35,14 @@ function Grades() {
                                         {user?.firstName} {user?.lastName}
                                     </td>
                                     {assignments.map((assignment) => {
-                                        const editableGrades: { [key: string]: string } = {};
                                         const grade = db.grades.find(
                                             (grade) =>
                                                 grade.student === enrollment.user && grade.assignment === assignment._id
                                         );
-                                        const isEditable = true;
-                                        const gradeKey = `${enrollment.user}-${assignment._id}`;
-                                        const value = editableGrades[gradeKey] !== undefined ? editableGrades[gradeKey] : grade?.grade || '';
 
                                         return (
                                             <td key={assignment._id}>
-                                                {isEditable ? (
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="text"
-                                                            className="form-control"
-                                                            value={value}
-                                                            onChange={(e) => handleGradeChange(enrollment.user, assignment._id, e.target.value)}
-                                                        />
-                                                    </div>
-                                                ) : (
-                                                    grade?.grade != null ? `${grade.grade}%` : ''
-                                                )}
+                                                {grade?.grade != null ? `${grade.grade}%` : ''}
                                             </td>
                                         );
                                     })}
