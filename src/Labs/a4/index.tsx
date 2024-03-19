@@ -11,7 +11,7 @@ import ObjectStateVariable from "./ObjectStateVariable";
 import ArrayStateVariable from "./ArrayStateVariable";
 import ParentStateComponent from "./ParentStateComponent";
 import ReduxExamples from "./ReduxExamples";
-import TodoList from "./ReduxExamples/todos/Todolist";
+import TodoList from "../a3/todos/TodoList";
 
 const Assignment4 = () => {
   function sayHello() {
