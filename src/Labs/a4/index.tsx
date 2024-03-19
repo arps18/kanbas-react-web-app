@@ -6,6 +6,7 @@ import EventObject from "./EventObject";
 import Counter from "./Counter";
 import BooleanStateVariables from "./BooleanStateVariables";
 import StringStateVariables from "./StringStateVariables";
+import DateStateVariable from "./DateStateVariable";
 
 const Assignment4 = () => {
   function sayHello() {
@@ -22,6 +23,7 @@ const Assignment4 = () => {
       <Counter />
       <BooleanStateVariables />
       <StringStateVariables />
+      <DateStateVariable />
     </>
   );
 };
