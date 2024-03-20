@@ -34,7 +34,7 @@ function Dashboard({
       </div>
       <div className="row">
         <h4 className="ps-0">
-          <h6>New Course Form</h6>
+          <h6>Add/Edit Course Form</h6>
           <input
             value={course.name}
             className="w-25 mb-2 form-control"
