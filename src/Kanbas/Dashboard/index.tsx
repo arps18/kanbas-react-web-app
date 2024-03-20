@@ -28,6 +28,17 @@ const Dashboard = () => {
     const deleteCourse = (courseId: string) => {
       setCourses(courses.filter((course) => course._id !== courseId));
     };
+    const updateCourse = () => {
+      setCourses(
+        courses.map((c) => {
+          if (c._id === course._id) {
+            return course;
+          } else {
+            return c;
+          }
+        })
+      );
+    };
     return (
       // Dashboard
       <div className="col ms-5 ms-lg-3 container ms-0 me-0 main-content">
@@ -70,9 +81,18 @@ const Dashboard = () => {
               }
             />
 
-            <button className="btn btn-primary" onClick={addNewCourse}>
-              Add New Course
-            </button>
+            <div className="row">
+              <div className="col-2">
+                <button className="btn btn-info" onClick={addNewCourse}>
+                  Add New Course
+                </button>
+              </div>
+              <div className="col-2">
+                <button className="mx-2 btn btn-warning" onClick={updateCourse}>
+                  Update Course
+                </button>
+              </div>
+            </div>
             <hr />
           </h4>
         </div>
@@ -145,15 +165,15 @@ const Dashboard = () => {
                   </div>
                   <div className="row">
                     {/* <FaSquarePen /> */}
-                    <div className="col-6">
+                    <div className="col-4">
                       <Link
                         to={`/Kanbas/Courses/${course._id}/Home`}
-                        className="btn btn-primary"
+                        className="btn btn-success"
                       >
                         Go{" "}
                       </Link>
                     </div>
-                    <div className="col-6">
+                    <div className="col-4">
                       <button
                         className="btn btn-danger"
                         onClick={(event) => {
@@ -162,6 +182,17 @@ const Dashboard = () => {
                         }}
                       >
                         Delete
+                      </button>
+                    </div>
+                    <div className="col-4">
+                      <button
+                        className="btn btn-primary"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setCourse(course);
+                        }}
+                      >
+                        Edit
                       </button>
                     </div>
                   </div>
