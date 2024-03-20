@@ -25,6 +25,9 @@ const Dashboard = () => {
       };
       setCourses([...courses, { ...course, ...newCourse }]);
     };
+    const deleteCourse = (courseId: string) => {
+      setCourses(courses.filter((course) => course._id !== courseId));
+    };
     return (
       // Dashboard
       <div className="col ms-5 ms-lg-3 container ms-0 me-0 main-content">
@@ -140,8 +143,27 @@ const Dashboard = () => {
                       </p>
                     </Link>
                   </div>
-                  <div>
-                    <FaSquarePen />
+                  <div className="row">
+                    {/* <FaSquarePen /> */}
+                    <div className="col-6">
+                      <Link
+                        to={`/Kanbas/Courses/${course._id}/Home`}
+                        className="btn btn-primary"
+                      >
+                        Go{" "}
+                      </Link>
+                    </div>
+                    <div className="col-6">
+                      <button
+                        className="btn btn-danger"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          deleteCourse(course._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
