@@ -1,332 +1,188 @@
-import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import db from "../../../Database";
-import "../index.css";
-import AssignmentEditorTopBar from "./AssignmentEditorTopBar";
-import { FaPlus } from "react-icons/fa6";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { AssignmentState } from "../../../Store";
 import {
+  setAssignment,
   addAssignment,
   updateAssignment,
-  selectAssignment,
 } from "../assignmentReducer";
-import { AssignmentState } from "../../../Store";
 
-const AssignmentEditor = () => {
-  const { assignmentId } = useParams();
-
-  const assignments = useSelector(
-    (state: AssignmentState) => state.assignmentReducer.assignments
-  );
+function AssignmentEditor() {
   const assignment = useSelector(
     (state: AssignmentState) => state.assignmentReducer.assignment
   );
   const dispatch = useDispatch();
+  const { assignmentId } = useParams();
   const { courseId } = useParams();
   const navigate = useNavigate();
   const handleSave = () => {
     if (assignmentId === "new") {
-      const newAssignment = {
-        ...assignment,
-        _id: new Date().getTime().toString(),
-      };
-      dispatch(addAssignment(newAssignment));
+      dispatch(
+        addAssignment({
+          ...assignment,
+          course: courseId,
+          _id: new Date().getTime().toString(),
+        })
+      );
     } else {
-      dispatch(updateAssignment(assignment));
+      dispatch(updateAssignment({ ...assignment, course: courseId }));
     }
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };
+  const aFrom = assignment.availableFromDate;
+  const aUntil = assignment.availableUntilDate;
   return (
-    <div>
-      <AssignmentEditorTopBar />
-      <form>
-        <div className="mb-3 w-75">
-          <label className="form-label" htmlFor="assignment-name">
-            Assignment Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="assignment-name"
-            placeholder="Enter Assignment Name"
-            onChange={(e) =>
-              dispatch(
-                selectAssignment({ ...assignment, title: e.target.value })
-              )
-            }
-            value={"" + assignment.title}
-          />
-        </div>
-        <div className="mb-3 w-75">
-          <span className="ak-bold">Assignment Description</span>
-          <input
-            value={assignment.description}
-            className="form-control mb-2 mt-1"
-            onChange={(e) =>
-              dispatch(
-                selectAssignment({ ...assignment, description: e.target.value })
-              )
-            }
-          />
-          {/* <textarea
-                        className="form-control"
-                        rows={4}>
-                        {assignment.description}
-                    </textarea> */}
-        </div>
-        <div className="mb-3">
-          <div className="row">
-            <div className="col-3 text-end">
-              <label className="form-label">Points</label>
-            </div>
-            <div className="col-5">
-              <input
-                className="form-control"
-                type="number"
-                value={assignment.points}
-                onChange={(e) =>
-                  dispatch(
-                    selectAssignment({ ...assignment, points: e.target.value })
-                  )
-                }
-              />
-            </div>
+    <div className="me-5">
+      <div className="wd-kanbas-green float-end mt-2 ">
+        <i
+          className="fa fa-check-circle wd-kanbas-green"
+          aria-hidden="true"
+        ></i>
+        Published
+        <button type="button" className="btn btn-light">
+          <i className="fa fa-ellipsis-v ms-2"></i>
+        </button>
+      </div>
+      <br />
+      <br />
+      <hr />
+      <label htmlFor="input-1" className="form-label">
+        {" "}
+        Assignment Name{" "}
+      </label>
+      <input
+        value={assignment?.title}
+        className="form-control mb-2"
+        onChange={(e) =>
+          dispatch(setAssignment({ ...assignment, title: e.target.value }))
+        }
+      />
+      <br />
+      <textarea
+        value={assignment.description}
+        className="form-control"
+        onChange={(e) =>
+          dispatch(
+            setAssignment({ ...assignment, description: e.target.value })
+          )
+        }
+      ></textarea>
+      <br />
+      <div className="container">
+        <div className="row">
+          <div className="col-2">
+            <div className="float-end">Points</div>
           </div>
+          <div className="col-8">
+            <input
+              className="form-control"
+              id="input-2"
+              value={assignment.points}
+              onChange={(e) =>
+                dispatch(
+                  setAssignment({ ...assignment, points: e.target.value })
+                )
+              }
+            />
+          </div>
+          <div className="col-2"></div>
         </div>
-        <div className="mb-3">
-          {/* <div className="row">
-                        <div className="col-3 text-end">
-                            <label className="form-label" htmlFor="assignment-group">
-                                Assignment Group
-                            </label>
-                        </div>
-                        <div className="col-5">
-                            <select className="form-select" id="assignment-group">
-                                <option selected>ASSIGNMENTS</option>
-                                <option>QUIZZES</option>
-                                <option>EXAMS</option>
-                                <option>PROJECT</option>
-                            </select>
-                        </div>
-                    </div> */}
-        </div>
-        {/* <div className="mb-3"> */}
-        {/* <div className="row">
-                        <div className="col-3 text-end">
-                            <label className="form-label" htmlFor="display-grade">
-                                Display Grade as
-                            </label>
-                        </div>
-                        <div className="col-5">
-                            <select className="form-select" id="display-grade">
-                                <option selected>Percentage</option>
-                                <option>GPA</option>
-                                <option>Grade</option>
-                            </select>
-                        </div>
-                    </div> */}
-        {/* </div> */}
-        <div className="mb-4">
-          {/* <div className="row">
-                        <div className="col-3 text-end"></div>
-                        <div className="col-5">
-                            <div className="form-check">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    value=""
-                                    id="countFinalGrade"
-                                />
-                                <label className="form-check-label" htmlFor="countFinalGrade">
-                                    Do not count this assignment towards the final grade
-                                </label>
-                            </div>
-                        </div>
-                    </div> */}
-        </div>
-        <div className="mb-3">
-          {/* <div className="row">
-                        <div className="col-3 text-end">
-                            <label className="form-label" htmlFor="submission-type">
-                                Submission Type
-                            </label>
-                        </div>
-                        <div className="col-5">
-                            <div className="border border-secondary-subtle rounded p-3">
-                                <select className="form-select mb-3" id="submission-type">
-                                    <option selected>Online</option>
-                                    <option>Offline</option>
-                                </select>
-                                <div className="mb-2"><b>Online Entry Options</b></div>
-                                <div className="form-check mb-2">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="textEntry"
-                                        checked
-                                    />
-                                    <label className="form-check-label" htmlFor="textEntry">
-                                        Text Entry
-                                    </label>
-                                </div>
-                                <div className="form-check mb-2">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="websiteUrl"
-                                        checked
-                                    />
-                                    <label className="form-check-label" htmlFor="websiteUrl">
-                                        Website URL
-                                    </label>
-                                </div>
-                                <div className="form-check mb-2">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="mediaRec"
-                                        checked
-                                    />
-                                    <label className="form-check-label" htmlFor="mediaRec">
-                                        Media Recordings
-                                    </label>
-                                </div>
-                                <div className="form-check mb-2">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="studentAnnot"
-                                    />
-                                    <label className="form-check-label" htmlFor="studentAnnot">
-                                        Student Annotations
-                                    </label>
-                                </div>
-                                <div className="form-check mb-2">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="fileUploads"
-                                    />
-                                    <label className="form-check-label" htmlFor="fileUploads">
-                                        File Uploads
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-        </div>
-        <div className="mb-3">
-          <div className="row">
-            <div className="col-3 text-end">
-              <label className="form-label">Due Date</label>
-            </div>
-            <div className="col-5">
-              <div className="border border-secondary-subtle rounded">
-                {/* <div className="mb-3 ps-3 pe-3 pt-3">
-                                    <label htmlFor="assignTo" className="form-label">Assign To</label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        value="Everyone"
-                                        id="assignTo"
-                                    />
-                                </div> */}
-                <div className="mb-3 ps-3 pe-3">
-                  <input
-                    type="date"
-                    className="form-control"
-                    placeholder=""
-                    id="dueDate"
-                    onChange={(e) =>
-                      dispatch(
-                        selectAssignment({
-                          ...assignment,
-                          dueDate: e.target.value,
-                        })
-                      )
-                    }
-                    value={assignment.dueDate}
-                  />
+        <br />
+        <br />
+        <div className="row">
+          <div className="col-2">
+            <div className="float-end">Assign</div>
+          </div>
+          <div className="col-8">
+            <ul className="list-group list-group-item wd-kanbas-edit-section">
+              <li className="list-group-item border-0">
+                <b>Due</b>
+              </li>
+
+              <li className="list-group-item border-0">
+                <input
+                  type="date"
+                  className="form-control"
+                  id="input-4"
+                  value={assignment.dueDate}
+                  onChange={(e) =>
+                    dispatch(
+                      setAssignment({ ...assignment, dueDate: e.target.value })
+                    )
+                  }
+                />
+              </li>
+              <li className="list-group-item border-0">
+                <div className="row">
+                  <div className="col-6 float-start">
+                    <b className="wd-kanbas-width-45">Available from</b>
+                  </div>
+                  <div className="col-6 wd-float-start">
+                    <b className="wd-kanbas-width-45">Until</b>
+                  </div>
                 </div>
-                <div className="row ps-3 pe-3">
-                  {/* <div className="col">
-                                        <label className="form-label" htmlFor="availableFrom">
-                                            Available From
-                                        </label>
-                                    </div>
-                                    <div className="col">
-                                        <label className="form-label" htmlFor="until">
-                                            Until
-                                        </label>
-                                    </div> */}
+              </li>
+
+              <li className="list-group-item border-0">
+                <div className="row">
+                  <div className="col-6 float-start">
+                    <input
+                      type="date"
+                      className="form-control float-start wd-kanbas-width-45 me-1"
+                      id="input-5"
+                      value={aFrom}
+                      onChange={(e) =>
+                        dispatch(
+                          setAssignment({
+                            ...assignment,
+                            availableFromDate: e.target.value,
+                          })
+                        )
+                      }
+                    />
+                  </div>
+                  <div className="col-6 float-start">
+                    <input
+                      type="date"
+                      className="form-control float-start wd-kanbas-width-45 ms-1"
+                      id="input-6"
+                      value={aUntil}
+                      onChange={(e) =>
+                        dispatch(
+                          setAssignment({
+                            ...assignment,
+                            availableUntilDate: e.target.value,
+                          })
+                        )
+                      }
+                    />
+                  </div>
                 </div>
-                {/* <div className="row ps-3 pe-3">
-                                    <div className="col">
-                                        <div className="mb-3">
-                                            <input
-                                                type="date"
-                                                className="form-control"
-                                                placeholder=""
-                                                id="availableFrom"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="col">
-                                        <div className="mb-3">
-                                            <input
-                                                type="date"
-                                                className="form-control"
-                                                placeholder=""
-                                                id="until"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row mt-1">
-                                    <div className="col">
-                                        <button className="btn btn-secondary w-100 assign-add-btn">
-                                            <FaPlus className="me-1" />Add
-                                        </button>
-                                    </div>
-                                </div> */}
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
+          <div className="col-2"></div>
         </div>
-        <hr />
-        <div className="d-flex flex-row gap-1 align-items-center mb-3">
-          <div className="flex-grow-1">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="notifyUsers"
-              />
-              <label className="form-check-label" htmlFor="notifyUsers">
-                Notify users that this content has changed
-              </label>
-            </div>
-          </div>
-          <div>
-            <Link
-              to={`/Kanbas/Courses/${courseId}/Assignments`}
-              className="btn btn-secondary me-1"
-            >
-              Cancel
-            </Link>
-            <button onClick={handleSave} className="btn btn-danger">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
+      </div>
+
+      <hr />
+
+      <div className="float-start">
+        <input className="form-check-input" type="checkbox" id="check-9" />
+        <label className="form-check-label" htmlFor="check-9">
+          Notify users that this content has changed
+        </label>
+      </div>
+      <button onClick={handleSave} className="btn btn-success ms-2 float-end">
+        Save
+      </button>
+      <Link
+        to={`/Kanbas/Courses/${courseId}/Assignments`}
+        className="btn btn-danger float-end"
+      >
+        Cancel
+      </Link>
     </div>
   );
-};
+}
 export default AssignmentEditor;

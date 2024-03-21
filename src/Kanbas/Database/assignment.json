@@ -1,218 +1,92 @@
 [
   {
-    "_id": "A1",
-    "description": "A1 SETUP",
-    "week": "Week 0 - SETUP",
-    "dueDate": "Sep 18, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A101",
+    "title": "Propulsion Assignment",
+    "description": "Week 0 - SETUP - Week starting on Monday January 12th (01/12/2024) Module |",
+    "course": "RS101",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A2",
-    "description": "A2 HTML",
-    "week": "Week 1 - HTML",
-    "dueDate": "Sep 25, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A102",
+    "title": "Combustion Analysis",
+    "description": "Week 1 - Week starting on Monday March 12th (03/12/2024) Module |",
+    "course": "RS101",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A3",
-    "description": "A3 CSS",
-    "week": "Week 2 - CSS",
-    "dueDate": "Oct 2, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A103",
+    "title": "Nozzle Design Project",
+    "description": "Week 2 - Week starting on Monday March 19th (03/19/2024) Module |",
+    "course": "RS101",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A4",
-    "description": "A4 BOOTSTRAP",
-    "week": "Week 3 - Bootstrap",
-    "dueDate": "Oct 10, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A201",
+    "title": "Aerodynamics ",
+    "description": "Week 0 - SETUP - Week starting on Monday January 12th (01/12/2024) Module |",
+    "course": "RS102",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A5",
-    "description": "A5 JAVASCRIPT",
-    "week": "Week 4 - JavaScript",
-    "dueDate": "Oct 16, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A202",
+    "title": "Flow Analysis",
+    "description": "Week 1 - Week starting on Monday March 12th (03/12/2024) Module |",
+    "course": "RS102",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A6",
-    "description": "A6 REACT",
-    "week": "Week 5 - React & Routing",
-    "dueDate": "Oct 23, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A203",
+    "title": "Heating Analysis",
+    "description": "Week 2 - Week starting on Monday March 19th (03/19/2024) Module |",
+    "course": "RS102",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A7",
-    "description": "A7 REDUX",
-    "week": "Week 6 - Redux",
-    "dueDate": "Oct 30, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A301",
+    "title": "Structural Design Task",
+    "description": "Week 0 - SETUP - Week starting on Monday January 12th (01/12/2024) Module |",
+    "course": "RS103",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A8",
-    "description": "A8 NODE",
-    "week": "Week 7 - Node.js",
-    "dueDate": "Nov 6, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
+    "_id": "A302",
+    "title": "Orbital Calculations",
+    "description": "Week 1 - Week starting on Monday March 12th (03/12/2024) Module |",
+    "course": "RS103",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   },
   {
-    "_id": "A9",
-    "description": "A9 MONGO",
-    "week": "Week 8 - MongoDB",
-    "dueDate": "Nov 13, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS101"
-  },
-  {
-    "_id": "A10",
-    "description": "A1 SETUP",
-    "week": "Week 0 - SETUP",
-    "dueDate": "Sep 18, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A11",
-    "description": "A2 HTML",
-    "week": "Week 1 - HTML",
-    "dueDate": "Sep 25, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A12",
-    "description": "A3 CSS",
-    "week": "Week 2 - CSS",
-    "dueDate": "Oct 2, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A13",
-    "description": "A4 BOOTSTRAP",
-    "week": "Week 3 - Bootstrap",
-    "dueDate": "Oct 10, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A14",
-    "description": "A5 JAVASCRIPT",
-    "week": "Week 4 - JavaScript",
-    "dueDate": "Oct 16, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A15",
-    "description": "A6 REACT",
-    "week": "Week 5 - React & Routing",
-    "dueDate": "Oct 23, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A16",
-    "description": "A7 REDUX",
-    "week": "Week 6 - Redux",
-    "dueDate": "Oct 30, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A17",
-    "description": "A8 NODE",
-    "week": "Week 7 - Node.js",
-    "dueDate": "Nov 6, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A18",
-    "description": "A9 MONGO",
-    "week": "Week 8 - MongoDB",
-    "dueDate": "Nov 13, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS102"
-  },
-  {
-    "_id": "A19",
-    "description": "A1 SETUP",
-    "week": "Week 0 - SETUP",
-    "dueDate": "Sep 18, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A20",
-    "description": "A2 HTML",
-    "week": "Week 1 - HTML",
-    "dueDate": "Sep 25, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A21",
-    "description": "A3 CSS",
-    "week": "Week 2 - CSS",
-    "dueDate": "Oct 2, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A22",
-    "description": "A4 BOOTSTRAP",
-    "week": "Week 3 - Bootstrap",
-    "dueDate": "Oct 10, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A23",
-    "description": "A5 JAVASCRIPT",
-    "week": "Week 4 - JavaScript",
-    "dueDate": "Oct 16, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A24",
-    "description": "A6 REACT",
-    "week": "Week 5 - React & Routing",
-    "dueDate": "Oct 23, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A25",
-    "description": "A7 REDUX",
-    "week": "Week 6 - Redux",
-    "dueDate": "Oct 30, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A26",
-    "description": "A8 NODE",
-    "week": "Week 7 - Node.js",
-    "dueDate": "Nov 6, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
-  },
-  {
-    "_id": "A27",
-    "description": "A9 MONGO",
-    "week": "Week 8 - MongoDB",
-    "dueDate": "Nov 13, 2022 at 11:59pm",
-    "points": 100,
-    "course": "RS103"
+    "_id": "A303",
+    "title": "Systems Engineering Exam",
+    "description": "Week 2 - Week starting on Monday March 19th (03/19/2024) Module |",
+    "course": "RS103",
+    "dueDate": "2023-09-18",
+    "availableFromDate": "2023-09-11",
+    "points": "100",
+    "availableUntilDate": "2023-09-18"
   }
 ]

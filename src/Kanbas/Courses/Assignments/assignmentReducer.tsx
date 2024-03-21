@@ -29,7 +29,7 @@ const assignmentsSlice = createSlice({
         assignment._id === action.payload._id ? action.payload : assignment
       );
     },
-    selectAssignment: (state, action) => {
+    setAssignment: (state, action) => {
       state.assignment = action.payload;
     },
   },
@@ -39,6 +39,6 @@ export const {
   addAssignment,
   deleteAssignment,
   updateAssignment,
-  selectAssignment,
+  setAssignment,
 } = assignmentsSlice.actions;
 export default assignmentsSlice.reducer;
