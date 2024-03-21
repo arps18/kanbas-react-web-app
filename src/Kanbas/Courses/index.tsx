@@ -1,5 +1,11 @@
-import { Navigate, Route, Routes, useParams, useLocation } from "react-router-dom";
-import db  from "../Database";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useParams,
+  useLocation,
+} from "react-router-dom";
+import db from "../Database";
 import CourseNavigation from "./Navigation";
 import Modules from "./Modules";
 import Home from "./Home";
@@ -7,10 +13,9 @@ import Assignments from "./Assignments";
 import Breadcrumb from "./breadcrumb";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
-import "./index.css"
-import React from "react";
+import "./index.css";
 
-function Courses({ courses }: { courses: any[] }) {
+function Courses() {
   const { courseId } = useParams();
   const course = db.courses.find((course) => course._id === courseId);
   const location = useLocation();

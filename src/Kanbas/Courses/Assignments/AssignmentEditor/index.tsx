@@ -4,60 +4,97 @@ import db from "../../../Database";
 import "../index.css";
 import AssignmentEditorTopBar from "./AssignmentEditorTopBar";
 import { FaPlus } from "react-icons/fa6";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addAssignment,
+  updateAssignment,
+  selectAssignment,
+} from "../assignmentReducer";
+import { AssignmentState } from "../../../Store";
 
 const AssignmentEditor = () => {
-    const { assignmentId } = useParams();
-    const assignment = db.assignments.find(
-        (assignment) => assignment._id === assignmentId);
+  const { assignmentId } = useParams();
 
-    const { courseId } = useParams();
-    const navigate = useNavigate();
-    const handleSave = () => {
-        console.log("Actually saving assignment TBD in later assignments");
-        navigate(`/Kanbas/Courses/${courseId}/Assignments`);
-    };
-    return (
-        <div>
-            <AssignmentEditorTopBar />
-            <form>
-                <div className="mb-3 w-75">
-                    <label className="form-label" htmlFor="assignment-name">
-                        Assignment Name
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="assignment-name"
-                        placeholder="Enter Assignment Name"
-                        value={assignment?.title ?? ""}
-                    />
-                </div>
-                <div className="mb-3 w-75">
-                    {/* <textarea
+  const assignments = useSelector(
+    (state: AssignmentState) => state.assignmentReducer.assignments
+  );
+  const assignment = useSelector(
+    (state: AssignmentState) => state.assignmentReducer.assignment
+  );
+  const dispatch = useDispatch();
+  const { courseId } = useParams();
+  const navigate = useNavigate();
+  const handleSave = () => {
+    if (assignmentId === "new") {
+      const newAssignment = {
+        ...assignment,
+        _id: new Date().getTime().toString(),
+      };
+      dispatch(addAssignment(newAssignment));
+    } else {
+      dispatch(updateAssignment(assignment));
+    }
+    navigate(`/Kanbas/Courses/${courseId}/Assignments`);
+  };
+  return (
+    <div>
+      <AssignmentEditorTopBar />
+      <form>
+        <div className="mb-3 w-75">
+          <label className="form-label" htmlFor="assignment-name">
+            Assignment Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="assignment-name"
+            placeholder="Enter Assignment Name"
+            onChange={(e) =>
+              dispatch(
+                selectAssignment({ ...assignment, title: e.target.value })
+              )
+            }
+            value={"" + assignment.title}
+          />
+        </div>
+        <div className="mb-3 w-75">
+          <span className="ak-bold">Assignment Description</span>
+          <input
+            value={assignment.description}
+            className="form-control mb-2 mt-1"
+            onChange={(e) =>
+              dispatch(
+                selectAssignment({ ...assignment, description: e.target.value })
+              )
+            }
+          />
+          {/* <textarea
                         className="form-control"
                         rows={4}>
                         {assignment.description}
                     </textarea> */}
-                </div>
-                <div className="mb-3">
-                    <div className="row">
-                        <div className="col-3 text-end">
-                            <label className="form-label" htmlFor="assignment-points">
-                                Points
-                            </label>
-                        </div>
-                        <div className="col-5">
-                            <input
-                                className="form-control"
-                                id="assignment-points"
-                                type="number"
-                                value="{assignment.points}"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div className="mb-3">
-                    <div className="row">
+        </div>
+        <div className="mb-3">
+          <div className="row">
+            <div className="col-3 text-end">
+              <label className="form-label">Points</label>
+            </div>
+            <div className="col-5">
+              <input
+                className="form-control"
+                type="number"
+                value={assignment.points}
+                onChange={(e) =>
+                  dispatch(
+                    selectAssignment({ ...assignment, points: e.target.value })
+                  )
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mb-3">
+          {/* <div className="row">
                         <div className="col-3 text-end">
                             <label className="form-label" htmlFor="assignment-group">
                                 Assignment Group
@@ -71,10 +108,10 @@ const AssignmentEditor = () => {
                                 <option>PROJECT</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-                <div className="mb-3">
-                    <div className="row">
+                    </div> */}
+        </div>
+        {/* <div className="mb-3"> */}
+        {/* <div className="row">
                         <div className="col-3 text-end">
                             <label className="form-label" htmlFor="display-grade">
                                 Display Grade as
@@ -87,10 +124,10 @@ const AssignmentEditor = () => {
                                 <option>Grade</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-                <div className="mb-4">
-                    <div className="row">
+                    </div> */}
+        {/* </div> */}
+        <div className="mb-4">
+          {/* <div className="row">
                         <div className="col-3 text-end"></div>
                         <div className="col-5">
                             <div className="form-check">
@@ -105,10 +142,10 @@ const AssignmentEditor = () => {
                                 </label>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className="mb-3">
-                    <div className="row">
+                    </div> */}
+        </div>
+        <div className="mb-3">
+          {/* <div className="row">
                         <div className="col-3 text-end">
                             <label className="form-label" htmlFor="submission-type">
                                 Submission Type
@@ -181,16 +218,16 @@ const AssignmentEditor = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className="mb-3">
-                    <div className="row">
-                        <div className="col-3 text-end">
-                            <label className="form-label">Assign</label>
-                        </div>
-                        <div className="col-5">
-                            <div className="border border-secondary-subtle rounded">
-                                <div className="mb-3 ps-3 pe-3 pt-3">
+                    </div> */}
+        </div>
+        <div className="mb-3">
+          <div className="row">
+            <div className="col-3 text-end">
+              <label className="form-label">Due Date</label>
+            </div>
+            <div className="col-5">
+              <div className="border border-secondary-subtle rounded">
+                {/* <div className="mb-3 ps-3 pe-3 pt-3">
                                     <label htmlFor="assignTo" className="form-label">Assign To</label>
                                     <input
                                         className="form-control"
@@ -198,20 +235,26 @@ const AssignmentEditor = () => {
                                         value="Everyone"
                                         id="assignTo"
                                     />
-                                </div>
-                                <div className="mb-3 ps-3 pe-3">
-                                    <label className="form-label" htmlFor="dueDate">
-                                        Due
-                                    </label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        placeholder=""
-                                        id="dueDate"
-                                    />
-                                </div>
-                                <div className="row ps-3 pe-3">
-                                    <div className="col">
+                                </div> */}
+                <div className="mb-3 ps-3 pe-3">
+                  <input
+                    type="date"
+                    className="form-control"
+                    placeholder=""
+                    id="dueDate"
+                    onChange={(e) =>
+                      dispatch(
+                        selectAssignment({
+                          ...assignment,
+                          dueDate: e.target.value,
+                        })
+                      )
+                    }
+                    value={assignment.dueDate}
+                  />
+                </div>
+                <div className="row ps-3 pe-3">
+                  {/* <div className="col">
                                         <label className="form-label" htmlFor="availableFrom">
                                             Available From
                                         </label>
@@ -220,9 +263,9 @@ const AssignmentEditor = () => {
                                         <label className="form-label" htmlFor="until">
                                             Until
                                         </label>
-                                    </div>
-                                </div>
-                                <div className="row ps-3 pe-3">
+                                    </div> */}
+                </div>
+                {/* <div className="row ps-3 pe-3">
                                     <div className="col">
                                         <div className="mb-3">
                                             <input
@@ -250,38 +293,40 @@ const AssignmentEditor = () => {
                                             <FaPlus className="me-1" />Add
                                         </button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr />
-                <div className="d-flex flex-row gap-1 align-items-center mb-3">
-                    <div className="flex-grow-1">
-                        <div className="form-check">
-                            <input
-                                className="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="notifyUsers"
-                            />
-                            <label className="form-check-label" htmlFor="notifyUsers">
-                                Notify users that this content has changed
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <Link to={`/Kanbas/Courses/${courseId}/Assignments`}
-                            className="btn btn-secondary me-1">
-                            Cancel
-                        </Link>
-                        <button onClick={handleSave} className="btn btn-danger">
-                            Save
-                        </button>
-                    </div>
-                </div>
-            </form>
+                                </div> */}
+              </div>
+            </div>
+          </div>
         </div>
-    );
-}
+        <hr />
+        <div className="d-flex flex-row gap-1 align-items-center mb-3">
+          <div className="flex-grow-1">
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                value=""
+                id="notifyUsers"
+              />
+              <label className="form-check-label" htmlFor="notifyUsers">
+                Notify users that this content has changed
+              </label>
+            </div>
+          </div>
+          <div>
+            <Link
+              to={`/Kanbas/Courses/${courseId}/Assignments`}
+              className="btn btn-secondary me-1"
+            >
+              Cancel
+            </Link>
+            <button onClick={handleSave} className="btn btn-danger">
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};
 export default AssignmentEditor;
