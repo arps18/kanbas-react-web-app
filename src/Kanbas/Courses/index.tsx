@@ -13,16 +13,26 @@ import Assignments from "./Assignments";
 import Breadcrumb from "./breadcrumb";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
+
 import "./index.css";
 
-function Courses() {
+import React from "react";
+
+function Courses({ courses }: { courses: any[] }) {
   const { courseId } = useParams();
+
   const course = db.courses.find((course) => course._id === courseId);
+
   const location = useLocation();
+
   const pathSegments = location.pathname
+
     .split("/")
+
     .filter((segment) => segment !== "");
+
   const pageNames = pathSegments.slice(3);
+
   return (
     <div className="container ms-0 me-0 main-content">
       <div className="row">
@@ -39,18 +49,24 @@ function Courses() {
         <div className="col-2">
           <CourseNavigation />
         </div>
+
         <div className="col ms-5">
           <div>
             <div>
               <Routes>
                 <Route path="/" element={<Navigate to="Home" />} />
+
                 <Route path="Home" element={<Home />} />
+
                 <Route path="Modules" element={<Modules />} />
+
                 <Route path="Assignments" element={<Assignments />} />
+
                 <Route
                   path="Assignments/:assignmentId"
                   element={<AssignmentEditor />}
                 />
+
                 <Route path="Grades" element={<Grades />} />
               </Routes>
             </div>
@@ -60,4 +76,5 @@ function Courses() {
     </div>
   );
 }
+
 export default Courses;
