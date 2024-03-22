@@ -1,0 +1,13 @@
+.main-content {
+ 
+    margin-left: 110px !important;
+}
+
+.breadcrumb-separator {
+    --bs-breadcrumb-divider: ">" !important;
+}
+
+.breadcrumb-icon {
+    font-size: 20px;
+    color: red;
+}
