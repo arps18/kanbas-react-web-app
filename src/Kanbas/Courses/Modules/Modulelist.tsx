@@ -1,231 +1,175 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import db from "../../Database";
-import {
-  FaGripVertical,
-  FaCaretDown,
-  FaPlus,
-  FaEllipsisVertical,
-  FaCircleCheck,
-  FaLink,
-  FaArrowUpRightFromSquare,
-} from "react-icons/fa6";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import "./index.css";
+import { FaEllipsisV, FaCheckCircle, FaPlusCircle } from "react-icons/fa";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addModule,
   deleteModule,
   updateModule,
   setModule,
+  setModules,
 } from "./moduleReducer";
-import { ModulesState } from "../../Store";
+import { ModulesState, Module } from "../../Store"; // Adjust the import path as needed
+import * as client from "./client";
 
 function ModuleList() {
   const { courseId } = useParams();
-  const modules = useSelector(
-    (state: ModulesState) => state.modulesReducer.modules
-  );
-  const module = useSelector(
-    (state: ModulesState) => state.modulesReducer.module
-  );
   const dispatch = useDispatch();
+  useEffect(() => {
+    client
+      .findModulesForCourse(courseId)
+      .then((modules) => dispatch(setModules(modules)));
+  }, [courseId]);
 
-  const initialEditingModule = {
+  const [module, setModuleState] = useState<Module>({
     _id: "",
     title: "",
-    submodules: [
-      {
-        subtitle: "",
-        items: [{ title: "" }],
-      },
-    ],
+    description: "",
+    lessons: [],
+    submodules: [],
+    course: "",
+    name: ""
+  });
+
+  const handleAddModule = () => {
+    client.createModule(courseId, module).then((module) => {
+      dispatch(addModule(module));
+    });
   };
 
-  // New state to manage the module being edited
-  const [editingModule, setEditingModule] = useState(initialEditingModule);
-
-  // Function to handle edit button click
-  const handleEdit = (module: React.SetStateAction<{ _id: string; title: string; submodules: { subtitle: string; items: { title: string; }[]; }[]; }>) => {
-    setEditingModule(module);
+  const handleDeleteModule = (moduleId: string) => {
+    client.deleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
   };
 
-  // Function to handle update button click
-  const handleUpdate = () => {
-    dispatch(updateModule(editingModule));
-    // setEditingModule(null);
+  const handleUpdateModule = () => {
+    client.updateModule(module).then((status) => {
+      dispatch(updateModule(module));
+    });
   };
+
+  const moduleList = useSelector(
+    (state: ModulesState) => state.modulesReducer.modules
+  );
 
   return (
-    <div>
-      <div className="module-add mb-3 p-3 border rounded">
-        <div className="row">
-          <div className="col-9">
-            {/* Module Title Field */}
-            <input
-              className="form-control mb-2"
-              value={editingModule?.title ?? ""}
-              onChange={(e) =>
-                setEditingModule({ ...editingModule, title: e.target.value })
-              }
-              placeholder="Module Title"
-            />
-
-            {/* Handling submodules */}
-            {editingModule &&
-              editingModule.submodules.map((submodule, index) => (
-                <div key={index}>
-                  <input
-                    className="form-control mb-2"
-                    value={submodule.subtitle}
-                    onChange={(e) => {
-                      const newEditingModule = JSON.parse(
-                        JSON.stringify(editingModule)
-                      ); // Deep clone
-                      newEditingModule.submodules[index].subtitle =
-                        e.target.value;
-                      setEditingModule(newEditingModule);
-                    }}
-                    placeholder="Subtitle"
-                  />
-
-                  {/* Handling items within each submodule */}
-                  {submodule.items.map((item, itemIndex) => (
-                    <input
-                      className="form-control mb-2"
-                      value={item.title}
-                      onChange={(e) => {
-                        const newEditingModule = JSON.parse(
-                          JSON.stringify(editingModule)
-                        ); // Deep clone
-                        newEditingModule.submodules[index].items[
-                          itemIndex
-                        ].title = e.target.value;
-                        setEditingModule(newEditingModule);
-                      }}
-                      placeholder="Item Title"
-                    />
-                  ))}
-                </div>
-              ))}
-          </div>
-          <div className="col-3">
-            <button
-              type="button"
-              className="btn btn-primary me-1"
-              onClick={() => {
-                dispatch(updateModule(editingModule));
-                setEditingModule(initialEditingModule);
-              }}
-            >
-              Update
-            </button>
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={() => {
-                dispatch(
-                  addModule({
-                    ...editingModule,
-                    _id: new Date().getTime().toString(),
-                    course: courseId,
-                  })
-                );
-                setEditingModule(initialEditingModule); // resetting to the initial state
-              }}
-            >
-              Add
-            </button>
-          </div>
+    <div className="flex-fill pe-5 ps-0">
+      <div className="d-flex justify-content-end">
+        <button className="btn btn-light m-1">Collapse All</button>
+        <button className="btn btn-light m-1">View Progress</button>
+        <button className="btn btn-light dropdown-toggle m-1">
+          <FaCheckCircle className="text-success fs-20 mr-5" />
+          Publish All
+        </button>
+        <button className="btn btn-danger m-1">+ Module</button>
+        <button className="btn btn-light m-1">
+          <FaEllipsisV />
+        </button>
+      </div>
+      <hr />
+      <div>
+        <h4>Add New Module</h4>
+        <div>
+          <input
+            className="form-control my-1"
+            value={module.title}
+            onChange={(e) =>
+              setModuleState({ ...module, title: e.target.value })
+            }
+          />
+        </div>
+        <div>
+          <textarea
+            className="form-control my-1"
+            value={module.description}
+            onChange={(e) =>
+              setModuleState({ ...module, description: e.target.value })
+            }
+          />
+        </div>
+        <div>
+          <button
+            onClick={handleAddModule}
+            className="btn btn-sm btn-success me-1"
+          >
+            Add
+          </button>
+          <button
+            onClick={handleUpdateModule}
+            className="btn btn-sm btn-primary me-1"
+          >
+            Update
+          </button>
         </div>
       </div>
-
-      <div className="module-list">
-        {modules
+      <ul className="list-group wd-modules mt-4">
+        {moduleList
           .filter((module) => module.course === courseId)
           .map((module, index) => (
-            <ul className="list-group mb-3" key={index}>
-              <li className="list-group-item list-group-item-secondary">
-                <div className="d-flex justify-content-start align-items-center">
-                  <FaGripVertical className="me-2" />
-                  <FaPlus className="me-2" />
-                  <div className="module-title flex-grow-1">{module.title}</div>
+            <li
+              key={index}
+              className="list-group-item"
+              onClick={() => setModuleState(module)}
+            >
+              <div className="module-header py-3">
+                <span className="me-2 ms-1 cursor-pointer">
+                  <FaEllipsisV className="fs-20" />
+                </span>
+                <div className="d-inline-flex align-items-center justify-content-center">
+                  <button className="btn dropdown-toggle me-2"></button>
+                  <span className="fw-bold cursor-pointer">{module.title}</span>
+                </div>
+                <span className="float-end pe-2">
+                  <button className="dropdown-toggle bg-transparent me-3 d-inline-flex align-items-center justify-content-center">
+                    <FaCheckCircle className="text-success fs-20" />
+                  </button>
+                  <FaPlusCircle className="me-3 fs-20 cursor-pointer grey-color" />
                   <button
-                    type="button"
-                    className="btn btn-success me-1"
-                    onClick={() => handleEdit(module)}
+                    onClick={() => dispatch(setModule(module))}
+                    className="btn btn-primary me-1"
+                    style={{ padding: 3 }}
                   >
                     Edit
                   </button>
-
                   <button
-                    type="button"
-                    className="btn btn-danger me-2"
-                    onClick={() => dispatch(deleteModule(module._id))}
+                    onClick={() => handleDeleteModule(module._id)}
+                    className="btn btn-danger"
+                    style={{ padding: 3 }}
                   >
                     Delete
                   </button>
-
-                  <FaCircleCheck className="me-2" style={{ color: "green" }} />
-                  <FaCaretDown className="me-2" />
-                  <FaPlus className="me-3" />
-                  <FaEllipsisVertical />
-                </div>
-              </li>
-              {module.submodules.map((submodule, subIndex) => (
-                <div key={subIndex}>
-                  <li className="list-group-item module-border">
-                    <div className="d-flex justify-content-start align-items-center">
-                      <FaGripVertical className="me-2" />
-                      <div className="module-subtitle flex-grow-1">
-                        {submodule.subtitle.toUpperCase()}
-                      </div>
-                      <FaCircleCheck
-                        className="me-3"
-                        style={{ color: "green" }}
-                      />
-                      <FaEllipsisVertical />
-                    </div>
-                  </li>
-                  {submodule.items.length > 0 &&
-                    submodule.items.map((item, itemIndex) => (
-                      <li
-                        className={`list-group-item module-border ${
-                          submodule.subtitle === "Slides" ? "slides-item" : ""
-                        }`}
-                        key={itemIndex}
-                      >
-                        <div className="d-flex justify-content-start align-items-center">
-                          <FaGripVertical className="me-2" />
-                          {submodule.subtitle === "Slides" && (
-                            <FaLink style={{ color: "green" }} />
-                          )}
-                          {submodule.subtitle === "Slides" ? (
-                            <>
-                              <div className="module-link flex-grow-1">
-                                <a className="link" href={item.title}>
-                                  <span className="me-1">{item.title}</span>
-                                  <FaArrowUpRightFromSquare className="link" />
-                                </a>
-                              </div>
-                            </>
-                          ) : (
-                            <span className="module-item flex-grow-1">
-                              {item.title}
-                            </span>
-                          )}
-                          <FaCircleCheck
-                            className="me-3"
-                            style={{ color: "green" }}
+                  <FaEllipsisV className="ms-2 fs-20 cursor-pointer" />
+                </span>
+              </div>
+              {module._id === module._id && (
+                <ul className="list-group">
+                  {module.lessons?.map((lesson: { name: string }) => (
+                    <li className="list-group-item module-li">
+                      <div className="module-content py-2">
+                        <span className="me-2 ms-1">
+                          <FaEllipsisV
+                            className="fs-20"
+                            style={{ marginRight: -13 }}
                           />
-                          <FaEllipsisVertical />
-                        </div>
-                      </li>
-                    ))}
-                </div>
-              ))}
-            </ul>
+                          <FaEllipsisV className="fs-20 me-2" />
+                        </span>
+                        {lesson.name}
+                        <span className="float-end pe-2">
+                          <FaCheckCircle className="text-success me-3 fs-20 cursor-pointer" />
+                          <FaEllipsisV className="ms-2 fs-20 cursor-pointer" />
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
           ))}
-      </div>
+      </ul>
     </div>
   );
 }
+
 export default ModuleList;

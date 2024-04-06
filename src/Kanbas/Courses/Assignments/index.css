@@ -1,55 +1,83 @@
-body {
-    font-family: 'Lato', sans-serif;
+.wd-modules,
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
 }
 
-.link {
-    color: red;
-    text-decoration: none;
+.wd-modules {
+    margin: 5px;
+    list-style: none;
 }
 
-.assignment-title {
-    font-weight: bold;
+.wd-modules>li {
+    border: 1px solid gray !important;
+    border-left: none !important;
 }
 
-.assignment-item {
-    font-weight: bold;
+.wd-modules>li>div {
+    padding: 6px;
+    border-left: 1px solid gray !important;
 }
 
-.assignment-item-icon {
-    color: green;
+.wd-modules>li>ul {
+    list-style: none;
 }
 
-.list-group-item.assignment-border {
-    border-left: 5px solid green;
+.wd-modules>li>ul>li {
+    padding: 5px;
+    border-top: 1px solid gray !important;
+    border-left: 3px solid green;
 }
 
-.menu-icon {
-    color: red;
+.wd-modules>li {
+    margin-bottom: 20px;
 }
 
-.course-name,
-.page-name {
-    font-size: large;
+.module-header {
+    background-color: f5f5f5;
 }
 
-.assignment-link {
-    color: black;
-    text-decoration: none;
+.module-li:hover {
+    background-color: #d1ecf1;
+}
+.module-header {
+    background-color: f5f5f5;
 }
 
-.check-icon {
-    color: green;
+.module-li:hover {
+    background-color: #d1ecf1;
 }
 
-.col-2.cnav {
-    padding-left: 25px;
+.assignment-li:hover {
+    background-color: #d1ecf1;
 }
 
-.list-group.square-list-group {
-    border-radius: 0;
+.fs-12 {
+    font-size: 12px;
 }
 
-.assign-add-btn {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.mr-1 {
+    margin-right: 1px;
+}
+
+.ml-n3 {
+    margin-left: -3.5px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

@@ -36,11 +36,11 @@ function Assignments() {
       <Link to={`/Kanbas/Courses/${courseId}/Assignments/new`}>
         <button
           type="submit"
-          className="btn btn-warning float-end me-1 wd-kanbas-save-profile"
+          className="btn btn-danger float-end me-1 wd-kanbas-save-profile btn-danger"
           onClick={() => dispatch(setAssignment(intialAssignment))}
         >
           <i className="fa fa-plus"></i>
-          <span className="wd-left-margin-10"> Add Assignment</span>
+          <span className="wd-left-margin-10">Assignment</span>
         </button>
       </Link>
       <a href="#">
@@ -66,7 +66,7 @@ function Assignments() {
               >
                 <i className="fa fa-plus float-end mt-1 me-3"></i>
               </Link>
-              <div className="border border-dark p-1 rounded-pill float-end me-3 wd-kanbas-assignment-total">
+              <div className="border border-dark rounded-pill float-end me-3 wd-kanbas-assignment-total">
                 40% of Total
               </div>
             </div>

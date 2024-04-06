@@ -1,9 +1,9 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import db from "../Database";
-import "./index.css";
-import { FaSquarePen, FaEllipsisVertical } from "react-icons/fa6";
-import { useState } from "react";
 
+import { HiPencilSquare } from "react-icons/hi2";
+
+import "./index.css";
 function Dashboard({
   courses,
   course,
@@ -19,153 +19,99 @@ function Dashboard({
   deleteCourse: (course: any) => void;
   updateCourse: () => void;
 }) {
-  const course_count = courses.length;
   return (
-    // Dashboard
-    <div className="col ms-5 ms-lg-3 container ms-0 me-0 main-content">
-      <div className="row">
-        <h1 className="display-6 ps-0 mt-2">Dashboard</h1>
-        <hr />
-      </div>
+    <div className="p-4 ps-0">
+      <h1>Dashboard</h1> <hr />
+      <div style={{ width: 400 }} className="my-3">
+        <h4>Add new Course</h4>
 
-      <div className="row">
-        <h4 className="ps-0">Published Courses ({course_count})</h4>
-        <hr />
-      </div>
-      <div className="row">
-        <h4 className="ps-0">
-          <h6>New Course Form</h6>
-          <input
-            value={course.name}
-            className="w-25 mb-2 form-control"
-            onChange={(e) => setCourse({ ...course, name: e.target.value })}
-          />
-          <input
-            value={course.number}
-            className="w-25 mb-2 form-control"
-            onChange={(e) => setCourse({ ...course, number: e.target.value })}
-          />
-          <input
-            value={course.startDate}
-            className="w-25 mb-2 form-control"
-            type="date"
-            onChange={(e) =>
-              setCourse({ ...course, startDate: e.target.value })
-            }
-          />
-          <input
-            value={course.endDate}
-            className="w-25 mb-2 form-control"
-            type="date"
-            onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
-          />
+        <input
+          value={course.name}
+          className="form-control my-1"
+          onChange={(e) => setCourse({ ...course, name: e.target.value })}
+        />
 
-          <div className="row">
-            <div className="col-2">
-              <button className="btn btn-info" onClick={addNewCourse}>
-                Add New Course
-              </button>
-            </div>
-            <div className="col-2">
-              <button className="mx-2 btn btn-warning" onClick={updateCourse}>
-                Update Course
-              </button>
-            </div>
-          </div>
-          <hr />
-        </h4>
-      </div>
+        <input
+          value={course.number}
+          className="form-control my-1"
+          onChange={(e) => setCourse({ ...course, number: e.target.value })}
+        />
 
+        <input
+          value={course.title}
+          className="form-control my-1"
+          onChange={(e) => setCourse({ ...course, title: e.target.value })}
+        />
+
+        <input
+          value={course.description}
+          className="form-control my-1"
+          onChange={(e) =>
+            setCourse({ ...course, description: e.target.value })
+          }
+        />
+
+        <input
+          value={course.startDate}
+          className="form-control my-1"
+          type="date"
+          onChange={(e) => setCourse({ ...course, startDate: e.target.value })}
+        />
+
+        <input
+          value={course.endDate}
+          className="form-control my-1"
+          type="date"
+          onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
+        />
+
+        <button className="btn btn-info btn-sm me-1" onClick={addNewCourse}>
+          Add New Course
+        </button>
+
+        <button className="btn btn-warning btn-sm ms-1" onClick={updateCourse}>
+          Update Course
+        </button>
+      </div>
+      <h2>Published Courses ({courses.length})</h2> <hr />
       <div className="row">
-        <div className="d-flex flex-row flex-wrap ps-0">
-          {courses.map((course, index) => (
-            <div className="card dash-card">
-              <div className="card-menu">
-                <div className="dropdown">
-                  <button
-                    className="btn text-white card-dropdown"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <FaEllipsisVertical />
-                  </button>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <Link
-                key={course._id}
-                to={`/Kanbas/Courses/${course._id}`}
-                className="text-link"
-              >
+        <div className="row row-cols-1 ps-0 row-cols-md-5 g-4">
+          {courses.map((course) => (
+            <div key={course._id} className="col" style={{ width: 300 }}>
+              <div className="card">
                 <img
-                  src="/images/course.png"
+                  src={`/images/course.png`}
+                  alt="/images/course.png"
                   className="card-img-top"
-                  alt="Course Image"
+                  style={{ height: 150 }}
                 />
-              </Link>
-              <div className="card-body">
-                <div className="mb-3">
+
+                <div className="card-body">
                   <Link
-                    key={course._id}
-                    to={`/Kanbas/Courses/${course._id}`}
-                    className="text-link"
+                    className="card-title"
+                    to={`/Kanbas/Courses/${course._id}/Home`}
+                    style={{
+                      textDecoration: "none",
+                      color: "navy",
+                      fontWeight: "bold",
+                    }}
                   >
-                    <h5 className="card-title dash-card-title">
-                      {course.name}
-                    </h5>
-                    <h6 className="card-subtitle mb-2 text-body-secondary">
-                      {course.number}
-                    </h6>
-                    <p className="card-text">
-                      <small className="text-body-secondary">
-                        202410_1 Fall 2023 Semester Full Term
-                      </small>
-                    </p>
+                    {course.name}
                   </Link>
-                </div>
-                <div className="row">
-                  {/* <FaSquarePen /> */}
-                  <div className="col-4">
-                    <Link
-                      to={`/Kanbas/Courses/${course._id}/Home`}
-                      className="btn btn-success"
-                    >
-                      Go{" "}
-                    </Link>
-                  </div>
-                  <div className="col-4">
+                  <p className="card-text fw-lighter course-description course-zero-margin">
+                    {course.title}
+                  </p>
+                  <p className="card-text course-description">
+                    <small className="text-muted">{course.description}</small>
+                  </p>
+                  <Link
+                    to={`/Kanbas/Courses/${course._id}/Home`}
+                    className="fs-2 text-dark"
+                  >
+                    <HiPencilSquare />
+
                     <button
-                      className="btn btn-danger"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        deleteCourse(course._id);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                  <div className="col-4">
-                    <button
-                      className="btn btn-primary"
+                      className="btn btn-sm btn-primary m-2"
                       onClick={(event) => {
                         event.preventDefault();
                         setCourse(course);
@@ -173,7 +119,17 @@ function Dashboard({
                     >
                       Edit
                     </button>
-                  </div>
+
+                    <button
+                      className="btn btn-sm btn-danger m-2"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        deleteCourse(course._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

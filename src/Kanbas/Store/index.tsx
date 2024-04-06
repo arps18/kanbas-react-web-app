@@ -25,6 +25,9 @@ export interface AssignmentState {
 }
 
 export type Module = {
+  name: string | number | readonly string[];
+  description: string | number | readonly string[];
+  lessons: any;
   _id: string;
   title: string;
   submodules: Submodule[];
@@ -34,7 +37,10 @@ export type Module = {
 // Define the Submodule type representing a single submodule
 export type Submodule = {
   subtitle: string;
-  items: { title: string }[];
+  items: {
+    url: string;
+    title: string;
+  }[];
 };
 
 export type Course = {
