@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard";
 import Courses from "./Courses";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Account from "./Account";
 
 // const API_BASE = "http://localhost:4000";
 const API_BASE = process.env.REACT_APP_API_BASE;
@@ -60,6 +61,7 @@ function Kanbas() {
         <KanbsNavigation />
         <div style={{ flexGrow: 1 }}>
           <Routes>
+            <Route path="/Account/*" element={<Account />} />
             <Route path="/" element={<Navigate to="Dashboard" />} />
             <Route path="Account" element={<h1>Account</h1>} />
             <Route
