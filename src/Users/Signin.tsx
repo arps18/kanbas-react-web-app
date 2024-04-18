@@ -18,7 +18,6 @@ export default function Signin() {
 
   const signin = async () => {
     try {
-      // Check if username or password is empty
       if (!credentials.username.trim() || !credentials.password.trim()) {
         setError("Please enter both username and password.");
         return;
