@@ -12,6 +12,10 @@ export default function Profile() {
     role: "USER",
   });
   const navigate = useNavigate();
+  const signout = async () => {
+    await client.signout();
+    navigate("/Kanbas/Account/Signin");
+  };
 
   const save = async () => {
     await client.updateUser(profile);
@@ -71,6 +75,7 @@ export default function Profile() {
             <option value="STUDENT">Student</option>
           </select>
           <button onClick={save}>Save</button>
+          <button onClick={signout}>Signout</button>
           <Link
             to="/Kanbas/Account/Admin/Users"
             className="btn btn-warning w-100"

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { User } from "./client";
 import * as client from "./client";
 export default function Signin() {
@@ -32,6 +32,9 @@ export default function Signin() {
         }
       />
       <button onClick={signin}> Signin </button>
+      <button>
+        <Link to={"/Kanbas/Account/Signup"}>Signup</Link>
+      </button>
     </div>
   );
 }
