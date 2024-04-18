@@ -22,6 +22,16 @@ export const profile = async () => {
 };
 
 export const updateUser = async (user: any) => {
-  const response = await axios.put(`${USERS_API}/${user._id}`, user);
-  return response.data;
+   const response = await axios.put(`${USERS_API}/${user._id}`, user);
+    return response.data;
+};
+
+export const findAllUsers = async () => {
+    const response = await axios.get(`${USERS_API}`);
+    return response.data;
+};
+
+export const createUser = async (user: any) => {
+    const response = await axios.post(`${USERS_API}`, user);
+    return response.data;
 };
