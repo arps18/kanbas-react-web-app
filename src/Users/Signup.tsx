@@ -9,6 +9,11 @@ export default function Signup() {
 
   const signup = async () => {
     try {
+      if (!user.username || !user.password) {
+        setError("Please enter both username and password.");
+        return;
+      }
+
       await client.signup(user);
       navigate("/Kanbas/Account/Profile");
     } catch (err: any) {

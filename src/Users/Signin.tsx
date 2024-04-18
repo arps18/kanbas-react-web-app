@@ -13,11 +13,22 @@ export default function Signin() {
     role: "USER",
   });
 
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const signin = async () => {
-    await client.signin(credentials);
-    navigate("/Kanbas/Account/Profile");
+    try {
+      // Check if username or password is empty
+      if (!credentials.username.trim() || !credentials.password.trim()) {
+        setError("Please enter both username and password.");
+        return;
+      }
+
+      await client.signin(credentials);
+      navigate("/Kanbas/Account/Profile");
+    } catch (err: any) {
+      setError(err.response.data.message);
+    }
   };
 
   return (
@@ -25,6 +36,7 @@ export default function Signin() {
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h1 className="text-center mb-4">Sign In</h1>
+          {error && <div className="alert alert-danger">{error}</div>}
           <form>
             <div className="form-group">
               <label htmlFor="username">Username</label>
