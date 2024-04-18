@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as client from "./client";
+
 export default function Signup() {
   const [error, setError] = useState("");
   const [user, setUser] = useState({ username: "", password: "" });
   const navigate = useNavigate();
+
   const signup = async () => {
     try {
       await client.signup(user);
@@ -13,29 +15,53 @@ export default function Signup() {
       setError(err.response.data.message);
     }
   };
+
   return (
-    <div>
-      <h1>Signup</h1>
-      {error && <div>{error}</div>}
-      <input
-        value={user.username}
-        onChange={(e) =>
-          setUser({
-            ...user,
-            username: e.target.value,
-          })
-        }
-      />
-      <input
-        value={user.password}
-        onChange={(e) =>
-          setUser({
-            ...user,
-            password: e.target.value,
-          })
-        }
-      />
-      <button onClick={signup}> Signup </button>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <h1 className="text-center mb-4">Signup</h1>
+          {error && <div className="alert alert-danger">{error}</div>}
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              value={user.username}
+              onChange={(e) =>
+                setUser({
+                  ...user,
+                  username: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              value={user.password}
+              onChange={(e) =>
+                setUser({
+                  ...user,
+                  password: e.target.value,
+                })
+              }
+            />
+          </div>
+          <br />
+          <button
+            type="button"
+            className="btn btn-primary btn-block"
+            onClick={signup}
+          >
+            Signup
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

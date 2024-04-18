@@ -44,8 +44,11 @@ export default function UserTable() {
   };
 
   const deleteUser = async (user: User) => {
+
     try {
+        console.log(user);
       await client.deleteUser(user);
+    
       setUsers(users.filter((u) => u._id !== user._id));
     } catch (err) {
       console.log(err);
