@@ -1,4 +1,5 @@
 import Signin from "../../Users/Signin";
+import Profile from "../../Users/Profile";
 import { Routes, Route, Navigate } from "react-router-dom";
 export default function Account() {
   return (
