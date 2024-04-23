@@ -2,7 +2,8 @@ import axios from "axios";
 import { Submodule } from "../../Store";
 import { Module } from "../../Store";
 
-const API_BASE = process.env.REACT_APP_API_BASE;
+// const API_BASE = process.env.REACT_APP_API_BASE;
+const API_BASE = "https://localhost:4000";
 const COURSES_URL = `${API_BASE}/api/courses`;
 const MODULES_URL = `${API_BASE}/api/modules`;
 
